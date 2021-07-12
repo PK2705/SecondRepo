@@ -1,0 +1,68 @@
+declare
+create or replace procedure fib( a in number
+as
+counter integer
+
+ begin
+counter =0;
+for each counter in 0..a loop
+counter= counter+
+dbms_output.putline() 
+
+create or replace procedure rev_str( a in varchar2(20))
+type rv_str is table of varchar2;
+rv_st=rv_str();
+temp;
+as
+begin
+ 
+ for i in 0..(select len(a) from dual) loop 
+ rv_st=temp(substr((a),-1));
+ temp=rv_st;
+ exit when i = len(a);
+end loop;
+ dbms_output.putline('Reversed : ' ||rv_st());
+end;
+
+oracle
+
+elcaro
+
+students
+name marks  result
+pk	70   P	
+vk	30   F
+sk	45   
+pk
+vk
+select name, denserank() over (order by name desc)r from students;
+select count(name),name, marks from students
+ group by name 
+having count <> 1; 
+
+
+
+name
+school
+name	 marks 	result
+pk	70	P
+vk	80	g
+gk	90	k
+select name from students
+union all
+select name from school;
+pk
+
+
+select name, result, decode(result,'P',''PASS",'F',"FAIL","User value") from students;
+select name, result, case result when P then PASS
+			  when F then FAIL
+  end as result from students;
+select
+cursor cur is select marks from students;
+type type_name is table of index by binary integer;
+counter = 0;
+t_n type_name;
+begin
+ counter=t_n.NEXT;
+ open 
