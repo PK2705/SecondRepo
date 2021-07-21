@@ -66,3 +66,82 @@ t_n type_name;
 begin
  counter=t_n.NEXT;
  open 
+
+
+
+
+
+c_id customers.ID%type := 8;
+C_name customers.name%type;
+c_phone customers.numbers%type;
+
+begin
+
+select ID, name, numbers into c_id, c_name, c_phone from customers
+where id=cid;
+dbms_output.put_line(' Name :  '|| c_name);
+dbms_output.put_line(' Phone :  '|| c_phone);
+
+EXCEPTION
+ when NO_DATA_FOUND then
+ dbms_output.put_line('No Such Customer');
+
+when others then
+ dbms_output.put_line('Error..!');
+
+End;
+
+
+c_id customers.ID%type := 8;
+C_name customers.name%type;
+c_phone customers.numbers%type;
+c_invalid_id EXCEPTION;
+
+begin
+
+
+IF c_id <= 0 THEN
+RAISE c_invalid_id;
+
+ELSE
+
+select ID, name, numbers into c_id, c_name, c_phone from customers
+where id=cid;
+dbms_output.put_line(' Name :  '|| c_name);
+dbms_output.put_line(' Phone :  '|| c_phone);
+
+END IF;
+
+EXCEPTION
+ WHEN c_invalid_id THEN
+ dbms_output.put_line('Invalid ID. ID must be greater then 0 ');
+
+ when NO_DATA_FOUND then
+ dbms_output.put_line('No Such Customer');
+
+when others then
+ dbms_output.put_line('Error..!');
+
+End;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
